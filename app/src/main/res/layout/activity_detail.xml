@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="100dp"
+            app:cardCornerRadius="30dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="#FFF386">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_story_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:transitionName="story_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/image" />
+
+                <TextView
+                    android:id="@+id/tv_story_username"
+                    style="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:transitionName="username"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_story_image"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:text="name" />
+
+                <TextView
+                    android:id="@+id/tv_story_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:alpha="0.6"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:transitionName="date"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_story_username"
+                    app:layout_constraintStart_toStartOf="@+id/tv_story_username"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_story_username"
+                    tools:text="12 Des 2022" />
+
+                <TextView
+                    android:id="@+id/tv_story_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:transitionName="description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tv_story_date"
+                    app:layout_constraintStart_toStartOf="@+id/tv_story_date"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_story_date"
+                    tools:text="@string/description" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

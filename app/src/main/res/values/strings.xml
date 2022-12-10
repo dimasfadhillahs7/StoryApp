@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Story Application</string>
+    <string name="select_image">Select image</string>
+    <string name="camera">Camera</string>
+    <string name="galery">Galery</string>
+    <string name="description">Description</string>
+    <string name="share_location">Share location</string>
+    <string name="save">Save</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="register">register</string>
+    <string name="register_account">Register Account</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="title_activity_detail">Detail Story</string>
+    <string name="login_success">Login Success</string>
+    <string name="login_error">Email or password is wrong</string>
+    <string name="registration_success">Registration Success</string>
+    <string name="registration_error">Registration failed, please fill the form with corret information</string>
+    <string name="to_create_story">to create story</string>
+    <string name="you_can">You can upload your best memory</string>
+    <string name="please_login">Please login, something went wrong</string>
+    <string name="you_has_been_logout">You has been logout</string>
+    <string name="retry">Reconnect</string>
+    <string name="activate_your_location">Activate your location please</string>
+    <string name="upload_your_photo">Upload your photo first</string>
+    <string name="fill_this_description">FIll this description</string>
+    <string name="upload_succesful">Upload Succesful</string>
+    <string name="upload_failed">Upload failed!, please fill the descrption form</string>
+    <string name="upload_successful">Upload Successful</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="story_from">Story from</string>
+    <string name="gone_wrong">Something gone wrong, please wait</string>
+    <string name="email_error_message">Email is not valid</string>
+    <string name="passord_error">Minimum password is 6</string>
+
+</resources>
