@@ -2,7 +2,6 @@ package com.dimasfs.storyappsubmission2.ui.create
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.content.pm.PackageManager
@@ -11,7 +10,6 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -89,8 +87,12 @@ class CreateActivity : AppCompatActivity() {
                 createViewModel.createStory(token, imageMultipart, description, lat, lon).observe(this) { result ->
                         if (result.isSuccess) {
                             runLoading(true)
-                            startActivity(Intent(this@CreateActivity, MainActivity::class.java))
+                            val mainIntent = Intent(this@CreateActivity, MainActivity::class.java).apply {
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            }
+                            startActivity(mainIntent)
                             Toast.makeText(this, getString(R.string.upload_successful), Toast.LENGTH_SHORT).show()
+                            finish()
                         } else {
                             Toast.makeText(this, getString(R.string.upload_failed), Toast.LENGTH_LONG).show()
                         }
@@ -169,7 +171,8 @@ class CreateActivity : AppCompatActivity() {
             fusedLocationClient.lastLocation.addOnSuccessListener {
                 if (it != null) {
                     this.location = it
-                    Log.d(TAG, "getLocation: ${it.latitude}, ${it.longitude}")
+                    lat = it.latitude.toString().toRequestBody("text/plain".toMediaType())
+                    lon = it.longitude.toString().toRequestBody("text/plain".toMediaType())
                 } else {
                     Toast.makeText(this, getString(R.string.activate_your_location), Toast.LENGTH_SHORT).show()
                     binding.switchLocation.isChecked = false

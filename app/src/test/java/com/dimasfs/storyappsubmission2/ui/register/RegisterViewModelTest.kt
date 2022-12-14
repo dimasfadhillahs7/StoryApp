@@ -35,7 +35,7 @@ class RegisterViewModelTest{
     }
 
     @Test
-    fun `Register successfully - return respone not null`() {
+    fun `Register successfully - return response not null`() {
         val expected = MutableLiveData<Result<RegisterResponse>>()
         expected.value = Result.success(registerResponse)
         Mockito.`when`(storyRepository.userRegister(name, email, password)).thenReturn(expected)

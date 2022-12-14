@@ -3,6 +3,7 @@ package com.dimasfs.storyappsubmission2.ui.create
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.dimasfs.storyappsubmission2.repository.StoryRepository
+import com.dimasfs.storyappsubmission2.repository.User
 import com.dimasfs.storyappsubmission2.response.CreateResponse
 import com.dimasfs.storyappsubmission2.utils.DataDummy
 import com.dimasfs.storyappsubmission2.utils.getOrAwaitValue
@@ -32,6 +33,7 @@ class CreateViewModelTest{
     private lateinit var createViewModel: CreateViewModel
     private val createResponse = DataDummy.generateDummyCreateResponse()
     private val token = "kjdnfkwenfwe93244nkrb4jhr43984f4hfb493434fkjr3bf3948434-fef43f8"
+    private val name = "Dimas Fadhillah Sugiono"
     private var lat: RequestBody? = null
     private var lon: RequestBody? = null
 
@@ -66,5 +68,17 @@ class CreateViewModelTest{
         Mockito.verify(storyRepository).createStory(token, imageMultipart, description, lat, lon)
         Assert.assertNotNull(actualStory)
         Assert.assertTrue(actualStory is Result)
+    }
+
+    @Test
+    fun `Get user is successfully` () {
+
+        val repository = Mockito.mock(StoryRepository::class.java)
+        val liveData = MutableLiveData<User>()
+        liveData.value = User(name, token, true)
+        Mockito.`when`(repository.getUserData()).thenReturn(liveData)
+
+        val createViewModel = CreateViewModel(repository)
+        Assert.assertEquals(createViewModel.getUser(), liveData)
     }
 }

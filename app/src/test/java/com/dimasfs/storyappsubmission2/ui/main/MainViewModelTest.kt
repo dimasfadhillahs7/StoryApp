@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.ListUpdateCallback
 import com.dimasfs.storyappsubmission2.paging.PagingAdapter
 import com.dimasfs.storyappsubmission2.repository.StoryRepository
+import com.dimasfs.storyappsubmission2.repository.User
 import com.dimasfs.storyappsubmission2.response.StoryItem
 import com.dimasfs.storyappsubmission2.utils.DataDummy
 import com.dimasfs.storyappsubmission2.utils.MainDispatcherRule
@@ -15,8 +16,10 @@ import com.dimasfs.storyappsubmission2.utils.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,6 +30,8 @@ import org.mockito.junit.MockitoJUnitRunner
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest{
+
+
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
@@ -34,8 +39,19 @@ class MainViewModelTest{
     @get:Rule
     val mainDispatcherRules = MainDispatcherRule()
 
+
+
+
     @Mock
     private lateinit var storyRepository: StoryRepository
+    private lateinit var mainViewModel: MainViewModel
+    private val token = "kjdnfkwenfwe93244nkrb4jhr43984f4hfb493434fkjr3bf3948434-fef43f8"
+    private val name = "Dimas Fadhillah Sugiono"
+
+    @Before
+    fun setup(){
+        mainViewModel= MainViewModel(storyRepository)
+    }
 
     @Test
     fun `Get stories successfully - return not null`() = runTest {
@@ -60,6 +76,24 @@ class MainViewModelTest{
         assertEquals(storiesResponse, differ.snapshot())
         assertEquals(storiesResponse.size, differ.snapshot().size)
         assertEquals(storiesResponse[0].name, differ.snapshot()[0]?.name)
+    }
+
+    @Test
+    fun `Get user is successfully` () {
+
+        val repository = Mockito.mock(StoryRepository::class.java)
+        val liveData = MutableLiveData<User>()
+        liveData.value = User(name, token, true)
+        Mockito.`when`(repository.getUserData()).thenReturn(liveData)
+
+        val mainViewModel = MainViewModel(repository)
+        Assert.assertEquals(mainViewModel.getUser(), liveData)
+    }
+
+    @Test
+    fun `Logout successfully`(): Unit= runTest {
+        mainViewModel.logout()
+        Mockito.verify(storyRepository).logout()
     }
 
     private val noopListUpdateCallback = object : ListUpdateCallback {
