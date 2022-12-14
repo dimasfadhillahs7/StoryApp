@@ -1,26 +1,67 @@
 LoginViewModelTest
+a) login successfully - return not null
 - memastikan data input email dan password tidak null
 - meminta data pada respository
 - memastikan data input dengan data yang ada pada repository sama
 - memastikan hasilnya success dan berhasil login
 
+b) login successfully
+- memanggil method login pada viewmodel
+- memastikan method login pada story repository terpanggil
+
+c) save user successfully
+- memanggil method saveUser pada viewmodel
+- memastikan method saveUserData pada story repository terpanggil
+
+d) save token successfully
+- memanggil method saveToken pada viewmodel
+- memastikan method saveToken pada story repository terpanggil
+
+-------------------------------------------------------------------------------------------
+
 RegisterViewModelTest
+a) register successfully - return response not null
 - memastikan data input nama, email, dan password tidak null
 - memasukkan data nama, email, dan password ke repository
 - memastikan prosesnya suscess dan berhasil registrasi
 
+-------------------------------------------------------------------------------------------
+
 MainViewModelTest
+a) get stories successfully - return not null
 - memastikan inisialisasi variabel berfungsi
 - memastikan data tidak null
 - memastikan bahwa paging menampilkan data dengan benar
 
+b) get user is successfully
+- Memastikan data tidak null.
+- Memastikan data user sesuai dengan yang diharapkan.
+
+c) logout successfully
+- memanggil method logout pada viewmodel
+- memastikan method logout pada story repository terpanggil
+
+-------------------------------------------------------------------------------------------
+
 CreateViewModelTest
+a) create story successfully
 - memastikan inisialisasi variabel berfungsi
 - memastikan token tidak null
 - memastikan data terkirim dengan benar
 - memastikan berhasil upload dan create story
 
+b) get user is successfully
+- Memastikan data tidak null.
+- Memastikan data user sesuai dengan yang diharapkan.
+
+-------------------------------------------------------------------------------------------
+
 MapsViewModelTest
+a) get stories location successfully
 - memastikan token tidak null
 - memanggil data location 
 - Memastikan bahwa maps mengembalikan data dengan benar
+
+b) get user is successfully
+- Memastikan data tidak null.
+- Memastikan data user sesuai dengan yang diharapkan.

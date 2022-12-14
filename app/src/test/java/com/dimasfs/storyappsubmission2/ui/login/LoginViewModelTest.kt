@@ -34,9 +34,9 @@ class LoginViewModelTest{
     private lateinit var loginViewModel: LoginViewModel
     private val loginResponse = DataDummy.generateDummyLoginResponse()
     private val email = "dimasfadhillahs@gmail.com"
-    private val name = "Dimas Fadhillah S"
+    private val name = "Dimas Fadhillahs"
     private val password = "bismillahdiacc"
-    private val token = "quwquw0qw8uw8qwhswuhd8udwhd"
+    private val token = "kjdnfkwenfwe93244nkrb4jhr43984f4hfb493434fkjr3bf3948434-fef43f8"
     private val user  = User(name, token, true )
 
     @Before
@@ -68,5 +68,11 @@ class LoginViewModelTest{
     fun `Save token successfully`(): Unit= runTest {
         loginViewModel.saveToken(token)
         Mockito.verify(storyRepository).saveToken(token)
+    }
+
+    @Test
+    fun `Login successfully`(): Unit= runTest {
+        loginViewModel.login()
+        Mockito.verify(storyRepository).login()
     }
 }
